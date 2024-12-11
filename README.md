@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+day 1
+프로젝트 셋업, 라우팅 구성
+라이엇 키 발급받고 Docs 구경하기
 
-## Getting Started
+day 2
+Route Handler, server action 설계 with Typescript
+클라이언트에서 설계한 api end point 호출하기
 
-First, run the development server:
+day 3
+ISR로 챔피언 목록 페이지 구현
+SSR로 챔피언 상세 데이터 구현
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+day 4
+CSR "use client" 사용해서 챔피언 로테이션 페이지 구현
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+day 5
+SSG로 아이템 목록 페이지 구현
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+day 6
+배포, 트리벌 슈팅, 리팩토링
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+start
+npx create-next-app@14
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

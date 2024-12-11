@@ -1,3 +1,4 @@
+// 글로벌 레이아웃 컴포넌트
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
