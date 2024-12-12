@@ -22,3 +22,5 @@ day 6
 start
 npx create-next-app@14
 
+day2
+기본적인 파일 셋팅
