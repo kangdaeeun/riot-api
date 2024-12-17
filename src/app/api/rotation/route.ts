@@ -11,3 +11,15 @@
 // 요청 시 headers 옵션을 사용하여 인증 헤더를 설정
 // 에러 발생 시 상태 코드와 메시지를 정확히 반환
 
+// 3-6 라우트핸들러 다시 보기
+
+export async function GET(request: Request) {
+  // Riot Games API 호출 (엔드포인트, headers에 토큰을 설정하여 API키를 포함시키기)
+  const res = await fetch("https://kr.api.riotgames.com/lol/platform/v3/champion-rotations", {
+    headers: { "X-Riot-Token": process.env.RIOT_API_KEY },
+  });
+  const data = await res.json();
+  return Response.json(data);
+}
+
+// 튜터님에게 저기 헤더 밑줄 물어보기 
