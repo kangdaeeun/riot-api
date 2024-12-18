@@ -1,7 +1,7 @@
 // 서버 컴포넌트에서 사용할 데이터 페칭 함수를 작성.(예를 들어, 챔피언 목록과 상세 정보를 가져오는 함수를 정의)
 // fetchChampionList 함수를 작성하여 챔피언 목록 가져오기
 
-export async function GET(request: Request) {
+export async function GET(request: Request) {    //  여기 겟은 사용 불가
   const res = await fetch(
     "https://ddragon.leagueoflegends.com/api/versions.json"
   );

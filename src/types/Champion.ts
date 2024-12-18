@@ -7,7 +7,7 @@
 // Riot의 Data Dragon API 에서 제공하는 챔피언 데이터 구조를 참고
 // 필요한 경우 타입을 확장하거나 새로운 인터페이스를 생헝할 수 있음
 
-type ChampionData = {
+export type ChampionData = {
   type: string;
   format: string;
   version: string;
@@ -16,7 +16,7 @@ type ChampionData = {
   };
 };
 
-type Champion = {
+export type Champion = {
   version: string;
   id: string;
   key: string;
@@ -30,14 +30,14 @@ type Champion = {
   stats: ChampionStats;
 };
 
-type ChampionInfo = {
+export type ChampionInfo = {
   attack: number;
   defense: number;
   magic: number;
   difficulty: number;
 };
 
-type ChampionImage = {
+export type ChampionImage = {
   full: string;
   sprite: string;
   group: string;
@@ -47,7 +47,7 @@ type ChampionImage = {
   h: number;
 };
 
-type ChampionStats = {
+export type ChampionStats = {
   hp: number;
   hpperlevel: number;
   mp: number;
