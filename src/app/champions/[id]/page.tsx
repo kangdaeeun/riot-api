@@ -1,15 +1,21 @@
 "use server";
 
-import { getChampion, getVersion } from "@/utils/serverApi";
+import { getChampionDetail } from "@/utils/serverApi";
+import Image from "next/image";
+type Props = {
+  params: {
+    id: string;
+    title: string;
+  }
+}
 
-export default async function ChampionDetail() {
-  const championVersion = await getVersion();
-  const champions = await getChampion();
+export default async function ChampionDetailList({params}: Props) {
+  const championDetail = getChampionDetail(params.id);
+  console.log("mmmmmm", championDetail.id)
 
   return (
-    <div>{Object.entries(champions).find(()=>(
-      
-    ))}</div>
+    <div>안녕
+    </div> 
   );
 }
 

@@ -31,3 +31,14 @@ export async function getChampion() {
 }
 
 // 상세 정보 불러오는 함수 적고, id 폴더 안에 잇는 디테일 페이지에다가 불러오기
+
+export async function getChampionDetail(id:string) {
+  try {
+    const version = await getVersion();
+    const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`)
+    const data = await res.json();
+    return data.data[id];
+  } catch (error){
+    throw new Error(`$(error): 잘못된 페이지 입니다.`)
+  }
+}
