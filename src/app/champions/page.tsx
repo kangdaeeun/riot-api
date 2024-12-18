@@ -1,37 +1,33 @@
 "use server";
 
-import { Champion } from "@/types/Champion";
+import { getChampion, getVersion } from "@/utils/serverApi";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function ChampionList() {
-  const res = await fetch(
-    "https://ddragon.leagueoflegends.com/api/versions.json"
-  );
-
-  const version = await res.json();
-
-  const res2 = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/${version[0]}/data/ko_KR/champion.json`,
-    {
-      next: { revalidate: 86400 },
-    }
-  );
-  const data = await res2.json();
-  const champions: Champion[] = data.data;
+  const championVersion = await getVersion();
+  const champions = await getChampion();
 
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
       {Object.entries(champions).map(([key, value]) => (
-        <div key={value.id}>
-          <p>{value.name}</p>
-          <p>{value.blurb}</p>
-          <Image
-            src={`https://ddragon.leagueoflegends.com/cdn/${version[0]}/img/champion/${value.id}.png`}
-            width={100}
-            height={100}
-            alt={value.name}
-          />
-        </div>
+        <Link href={`/champions/${value.id}`}>
+          <div
+            key={value.id}
+            className="bg-white rounded-lg shadow-lg p-4 hover:shadow-xl transition-shadow"
+          >
+            <Image
+              src={`https://ddragon.leagueoflegends.com/cdn/${championVersion}/img/champion/${value.id}.png`}
+              width={100}
+              height={100}
+              alt={value.name}
+              className="rounded-lg mx-auto"
+            />
+            <h2 className="text-lg font-semibold text-center mt-2">
+              {value.name}
+            </h2>
+          </div>
+        </Link>
       ))}
     </div>
   );
