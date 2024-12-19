@@ -3,7 +3,7 @@
 
 import { Champion } from "@/types/Champion";
 
-// API 정보 가져오기
+// API 정보 가져오기(최신버전으로)
 export async function getVersion() {
   const res = await fetch(
     "https://ddragon.leagueoflegends.com/api/versions.json"
@@ -47,5 +47,21 @@ export async function getChampionDetail(id: string) {
     return data.data[id];
   } catch (error) {
     throw new Error(`$(error): 잘못된 페이지 입니다.`);
+  }
+}
+
+// 아이템 API 가져오기
+export async function getItem() {
+  try {
+    const version = await getVersion();
+    const res = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`
+    );
+    const data = await res.json();
+    // 최신 데이터 가져오기
+    return data.data;
+  } catch (error) {
+    console.error("getItem 함수 실행 중 오류:", error);
+    throw error; // 호출 측에서 처리할 수 있도록 에러를 다시 던짐
   }
 }

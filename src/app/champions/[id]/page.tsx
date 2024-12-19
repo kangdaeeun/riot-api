@@ -3,6 +3,7 @@
 import { ChampionDetail } from "@/types/Champion";
 import { getChampionDetail, getVersion } from "@/utils/serverApi";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   params: {
@@ -18,6 +19,9 @@ export default async function ChampionDetailList({ params }: Props) {
   // indexOf 를 사용하여 내가 누른 값의 id와 눌린 id값이 같다면 그 id를 가진 데이터를 보여줘!! 를 작성하고 싶음
   return (
     <div>
+      <h2>
+        <Link href="/champions">뒤로가기</Link>
+      </h2>
       <Image
         src={`https://ddragon.leagueoflegends.com/cdn/${championVersion}/img/champion/${params.id}.png`}
         width={300}
@@ -30,7 +34,7 @@ export default async function ChampionDetailList({ params }: Props) {
           return (
             <Image
               src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${params.id}_${skin.num}.jpg`}
-              width={100}
+              width={80}
               height={100}
               alt={params.name}
               className="rounded-lg mx-auto"
