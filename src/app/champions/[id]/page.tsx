@@ -26,7 +26,7 @@ export default async function ChampionDetailList({ params }: Props) {
         src={`https://ddragon.leagueoflegends.com/cdn/${championVersion}/img/champion/${params.id}.png`}
         width={300}
         height={300}
-        alt={params.name}
+        alt={championDetail.name}
         className="rounded-lg mx-auto"
       />
       <div className="flex ">

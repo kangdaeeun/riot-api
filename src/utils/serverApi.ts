@@ -2,6 +2,7 @@
 // fetchChampionList 함수를 작성하여 챔피언 목록 가져오기
 
 import { Champion } from "@/types/Champion";
+import { Item } from "@/types/Item";
 
 // API 정보 가져오기(최신버전으로)
 export async function getVersion() {
@@ -58,8 +59,9 @@ export async function getItem() {
       `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/item.json`
     );
     const data = await res.json();
+    const items: Item[] = Object.values(data.data)
     // 최신 데이터 가져오기
-    return data.data;
+    return items;
   } catch (error) {
     console.error("getItem 함수 실행 중 오류:", error);
     throw error; // 호출 측에서 처리할 수 있도록 에러를 다시 던짐
