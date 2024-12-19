@@ -16,7 +16,7 @@
 export async function GET(request: Request) {
   // Riot Games API 호출 (엔드포인트, headers에 토큰을 설정하여 API키를 포함시키기)
   const res = await fetch("https://kr.api.riotgames.com/lol/platform/v3/champion-rotations", {
-    headers: { "X-Riot-Token": process.env.RIOT_API_KEY },
+    headers: { "X-Riot-Token": process.env.RIOT_API_KEY! }
   });
   const data = await res.json();
   return Response.json(data);

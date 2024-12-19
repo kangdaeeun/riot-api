@@ -45,3 +45,6 @@ export default async function ChampionDetailList({params}: Props): Promise<Props
 
 6. map 사용 시 key 값이 중복 사용이 되는 오류가 발생
 - 아예 다른 키값으로 줘서 해결했음
+
+7. vercel 배포하려고 import하는 과정에서 repositories가 하나만 뜨는 문제 발생
+- 내 설정에서 모든 레포지토리를 임포트하는 것이 아닌 내가 선택한 레포지토리만 임포트하는 설정이 되어 있었음
