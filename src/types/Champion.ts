@@ -30,13 +30,38 @@ export type Champion = {
   stats: ChampionStats;
 };
 
-export type ChampionInfo = {
-  attack: number;
-  defense: number;
-  magic: number;
-  difficulty: number;
+// 챔피언 데이터 전체 구조
+export type ChampionDetailData = {
+  type: string;
+  format: string;
+  version: string;
+  data: {
+    [key: string]: ChampionDetail; // 챔피언 ID를 키로 하는 챔피언 상세 데이터
+  };
 };
 
+// 챔피언 상세 데이터
+export type ChampionDetail = {
+  id: string;
+  key: string;
+  name: string;
+  title: string;
+  image: ChampionImage;
+  skins: ChampionSkin[];
+  lore: string;
+  blurb: string;
+  allytips: string[];
+  enemytips: string[];
+  tags: string[];
+  partype: string;
+  info: ChampionInfo;
+  stats: ChampionStats;
+  spells: ChampionSpell[];
+  passive: ChampionPassive;
+  recommended: any[]; // 사용 여부에 따라 상세 타입을 정의하거나 빈 배열로 둡니다.
+};
+
+// 챔피언 이미지 데이터
 export type ChampionImage = {
   full: string;
   sprite: string;
@@ -47,6 +72,23 @@ export type ChampionImage = {
   h: number;
 };
 
+// 챔피언 스킨 데이터
+export type ChampionSkin = {
+  id: string;
+  num: number;
+  name: string;
+  chromas: boolean;
+};
+
+// 챔피언 능력치
+export type ChampionInfo = {
+  attack: number;
+  defense: number;
+  magic: number;
+  difficulty: number;
+};
+
+// 챔피언 상세 능력치
 export type ChampionStats = {
   hp: number;
   hpperlevel: number;
@@ -68,4 +110,38 @@ export type ChampionStats = {
   attackdamageperlevel: number;
   attackspeedperlevel: number;
   attackspeed: number;
+};
+
+// 챔피언 스킬 데이터
+export type ChampionSpell = {
+  id: string;
+  name: string;
+  description: string;
+  tooltip: string;
+  leveltip: {
+    label: string[];
+    effect: string[];
+  };
+  maxrank: number;
+  cooldown: number[];
+  cooldownBurn: string;
+  cost: number[];
+  costBurn: string;
+  datavalues: Record<string, any>;
+  effect: (number[] | null)[];
+  effectBurn: (string | null)[];
+  vars: any[]; // 상세 구조를 정의할 수 있지만, 필요 시 정의
+  costType: string;
+  maxammo: string;
+  range: number[];
+  rangeBurn: string;
+  image: ChampionImage;
+  resource: string;
+};
+
+// 챔피언 패시브 데이터
+export type ChampionPassive = {
+  name: string;
+  description: string;
+  image: ChampionImage;
 };

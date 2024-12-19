@@ -8,8 +8,10 @@ export async function getVersion() {
   const res = await fetch(
     "https://ddragon.leagueoflegends.com/api/versions.json"
   );
+  // json언어를 자스 언어로
   const version = await res.json();
-  return version[0];  // 최신버전
+  // 최신버전
+  return version[0];
 }
 
 // 챔피언 목록 ??
@@ -23,22 +25,27 @@ export async function getChampion() {
       }
     );
     const data = await res.json();
-    const champions: Champion[] = data.data;   // 챔피언 정보만 가져옴
+    // 챔피언 정보만 가져옴
+    const champions: Champion[] = data.data;
     return champions;
   } catch (error) {
-    throw new Error(`${error}: 잘못된 페이지 입니다.`);  // 에러 처리
+    // 에러 처리
+    throw new Error(`${error}: 잘못된 페이지 입니다.`);
   }
 }
 
 // 상세 정보 불러오는 함수 적고, id 폴더 안에 잇는 디테일 페이지에다가 불러오기
 
-export async function getChampionDetail(id:string) {
+// 특정 챔피언만 가져오는 API
+export async function getChampionDetail(id: string) {
   try {
     const version = await getVersion();
-    const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`)
+    const res = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
+    );
     const data = await res.json();
     return data.data[id];
-  } catch (error){
-    throw new Error(`$(error): 잘못된 페이지 입니다.`)
+  } catch (error) {
+    throw new Error(`$(error): 잘못된 페이지 입니다.`);
   }
 }
